@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEXUS ARENA — 1v1 vs IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="game-root">
+      <canvas id="viewport"></canvas>
+
+      <div id="hud" class="hidden">
+        <div class="top-bar">
+          <div class="score-card you">
+            <span class="label">VOCÊ</span>
+            <span id="score-player" class="value">0</span>
+          </div>
+          <div class="match-meta">
+            <span id="round-label">PRIMEIRO A 5</span>
+            <span id="clock">00:00</span>
+          </div>
+          <div class="score-card bot">
+            <span class="label">RAVEN-7</span>
+            <span id="score-bot" class="value">0</span>
+          </div>
+        </div>
+
+        <div class="health-row">
+          <div class="hp-block">
+            <div class="hp-meta">
+              <span>VITAL</span>
+              <span id="hp-player-num">100</span>
+            </div>
+            <div class="hp-track">
+              <div id="hp-player" class="hp-fill player"></div>
+            </div>
+          </div>
+          <div class="hp-block right">
+            <div class="hp-meta">
+              <span>IA</span>
+              <span id="hp-bot-num">100</span>
+            </div>
+            <div class="hp-track">
+              <div id="hp-bot" class="hp-fill bot"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="crosshair">
+          <span class="ch h"></span>
+          <span class="ch v"></span>
+          <span class="ch d"></span>
+        </div>
+        <div id="hit-marker"></div>
+        <div id="damage-vignette"></div>
+        <div id="ammo">∞ <small>PULSE RIFLE</small></div>
+      </div>
+
+      <div id="menu" class="overlay">
+        <div class="menu-inner">
+          <p class="kicker">PROTOCOLO 1v1 · ARENA FECHADA</p>
+          <h1>NEXUS<br />ARENA</h1>
+          <p class="tagline">
+            Shooter em primeira pessoa contra a unidade tática
+            <strong>RAVEN-7</strong>. Cubra-se, mire na cabeça e sobreviva.
+          </p>
+          <ul class="controls">
+            <li><kbd>W A S D</kbd> mover</li>
+            <li><kbd>MOUSE</kbd> mirar</li>
+            <li><kbd>CLIQUE</kbd> disparar</li>
+            <li><kbd>SHIFT</kbd> sprint</li>
+            <li><kbd>ESPAÇO</kbd> pular</li>
+            <li><kbd>ESC</kbd> pausar</li>
+          </ul>
+          <button id="btn-start" type="button">INICIAR COMBATE</button>
+          <p class="hint">Clique para capturar o cursor. Primeiro a 5 eliminações vence.</p>
+        </div>
+      </div>
+
+      <div id="pause" class="overlay hidden">
+        <div class="menu-inner compact">
+          <h2>PAUSADO</h2>
+          <p>O oponente também espera. Clique para retomar.</p>
+          <button id="btn-resume" type="button">RETOMAR</button>
+        </div>
+      </div>
+
+      <div id="result" class="overlay hidden">
+        <div class="menu-inner compact">
+          <p id="result-kicker" class="kicker">FIM DE PARTIDA</p>
+          <h2 id="result-title">VITÓRIA</h2>
+          <p id="result-sub"></p>
+          <button id="btn-restart" type="button">NOVA PARTIDA</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
